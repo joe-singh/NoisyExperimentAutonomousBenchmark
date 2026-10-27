@@ -1,10 +1,12 @@
-# DPA emulator: noisy experimental search
+# Noisy Experimental Search LLM Benchmark
 
-Supporting emulator code for **The Autonomous Lab**, by Jyotirmai Singh.
+Date Updated: 27 Oct 2026 
+
+Supporting emulator code for [The Autonomous Lab](https://scholar.google.com/citations?user=C7_px7QAAAAJ&hl=en&authuser=3) Noisy Experiment Benchmark.
 Agents search a two-dimensional SQUID bias landscape reconstructed from experimental
-measurements. The scored landscape is fixed; observations have synthetic noise,
+measurements. The scored landscape is fixed, based on real measurements, and observations have synthetic noise,
 persistent offsets, disturbed periods, bursts, and quality-control rejection.
-This is an offline simulation: it does not connect to laboratory instruments.
+This is an offline simulation: it doesn't connect to live laboratory instruments.
 
 ## Install
 
