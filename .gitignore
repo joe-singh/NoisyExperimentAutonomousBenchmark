@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+.DS_Store
+__MACOSX/
+*_results/
+bo_results_uncertainty/
+DPA-Agent-Workspace/
+*.zip
