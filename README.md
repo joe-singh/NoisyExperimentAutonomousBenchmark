@@ -138,9 +138,8 @@ coordinate, not its largest observed measurement. Report means over campaigns.
 The 240-point snapshot drives this simulation and agent-informed zoom-in points are
 not used to prevent biasing the experiment. Other included CSVs document the extraction history.
 
-The 17.08 dB reference is the grid maximum of the reconstructed simulated map - it is
-not a physical bound on the laboratory experiment. Noise parameters are informed
-by experimental control measurements but not strictly modeled on them.
+The 17.08 dB reference is the grid maximum of the reconstructed simulated map. Noise parameters are informed
+by experimental control measurements.
 See NONSTATIONARY_README.md for equations and parameters, and
 SQUID_Agent_Benchmark_Methodology.md for the protocol. Other Markdown files are
 historical development notes and can describe earlier modes.
