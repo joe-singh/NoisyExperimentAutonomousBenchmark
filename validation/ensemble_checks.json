@@ -1,0 +1,45 @@
+{
+  "mild": {
+    "campaigns": 100,
+    "seed_range": [
+      200,
+      299
+    ],
+    "control_pass_fraction": 0.8798000000000001,
+    "median_longest_qc_failure_streak": 2.0,
+    "dpa_error_p05_p50_p95": [
+      -2.561245928568273,
+      0.10989483654032384,
+      2.816765503329947
+    ]
+  },
+  "moderate": {
+    "campaigns": 100,
+    "seed_range": [
+      200,
+      299
+    ],
+    "control_pass_fraction": 0.7252,
+    "median_longest_qc_failure_streak": 4.0,
+    "dpa_error_p05_p50_p95": [
+      -4.146792621587001,
+      0.2441213259361561,
+      4.7190565133929585
+    ]
+  },
+  "severe": {
+    "campaigns": 100,
+    "seed_range": [
+      200,
+      299
+    ],
+    "control_pass_fraction": 0.6038,
+    "median_longest_qc_failure_streak": 6.0,
+    "dpa_error_p05_p50_p95": [
+      -6.006815652280388,
+      0.3540853440045906,
+      6.88993307470048
+    ]
+  },
+  "interpretation": "Fixed-control software sanity checks, not fitted reproduction of experimental statistics and not agent benchmark results."
+}

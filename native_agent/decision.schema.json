@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "Ib": { "type": "number", "description": "SQUID bias current in microampere, between 10 and 15" },
+    "Phib": { "type": "number", "description": "SQUID flux-bias current in microampere, between 0 and 70" },
+    "rationale": { "type": "string", "description": "Concise scientific reason for the chosen point" }
+  },
+  "required": ["Ib", "Phib", "rationale"],
+  "additionalProperties": false
+}

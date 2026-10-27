@@ -1,0 +1,38 @@
+{
+  "version": "controls_summary_v1",
+  "source_sha256": "798c64a1d4e0022e2f0e0e723e64969be1922cfb6ec0a213ef4f23db031f40d3",
+  "n_actions": 272,
+  "n_controls": 27,
+  "control_bias_uA": [
+    10.5,
+    22.75
+  ],
+  "control_pass_fraction": 0.5185185185185185,
+  "measurement_duration_s": 239.4320065,
+  "dpa": {
+    "n": 27,
+    "median": 15.483549823042992,
+    "robust_sigma": 2.873128059034309,
+    "min": 11.515244203970422,
+    "max": 27.40408209315073
+  },
+  "complex": {
+    "n": 27,
+    "median": 16.590101501912205,
+    "robust_sigma": 1.1476493654542366,
+    "min": 15.04322184378632,
+    "max": 20.92333292720596
+  },
+  "baseline_change_pct": {
+    "n": 27,
+    "median": -0.4280189264332823,
+    "robust_sigma": 14.222217599520146,
+    "min": -29.926152393634155,
+    "max": 26.344637436003502
+  },
+  "caveats": [
+    "Control spread includes fit error, drift, retuning and session changes; it is not an identified noise variance.",
+    "No inferred persistence time, covariance, burst probability or causal shielding model.",
+    "Control noise scales at one bias do not establish global spatial dependence."
+  ]
+}

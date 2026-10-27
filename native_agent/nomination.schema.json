@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "selected_evaluation": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50,
+      "description": "Evaluation number of a previously requested SQUID bias point. Pick an actual measured point."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Scientific justification of this final recommendation, considering QC and repeats."
+    }
+  },
+  "required": ["selected_evaluation", "rationale"],
+  "additionalProperties": false
+}
