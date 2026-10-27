@@ -31,8 +31,7 @@ python random_baseline.py --repeats 20 --seed 200 --out random_results
 ```
 
 For a quick software check, use `--repeats 1`. `results/` contains the supplied
-random-search and uncertainty-aware Bayesian-optimization results; it is not a
-complete archive of the LLM benchmark.
+random-search and uncertainty-aware Bayesian-optimisation results.
 
 The older `run_offline.py` provides additional illustrative policies and plots.
 Its summaries are not substitutes for the blog's final-nomination benchmark.
@@ -43,7 +42,7 @@ python run_offline.py --policy adaptive --budget 50 --repeats 1 \
   --disturbance-profile severe --out offline_results
 ```
 
-## Bayesian optimization
+## Bayesian optimisation
 
 ```bash
 python -m pip install -r requirements-bo.txt
@@ -54,8 +53,8 @@ Uses 10 Latin-hypercube initial locations, a scaled Matern-5/2 ARD GP,
 reported measurement variances plus a fitted shared noise term, and log noisy
 expected improvement. Only QC-valid observations train the GP. Final nomination
 maximizes posterior mean among visited locations. It has no explicit drift model.
-The supplied results record their original dependency versions; installing newer
-versions may change numerical optimization and trajectories. See VALIDATION.md
+The supplied results record their original dependency versions. Installing newer
+versions may change numerical optimisation and trajectories. See VALIDATION.md
 for what was actually executed for this release, and VALIDATION_ENVIRONMENT.txt
 for the tested package versions (the CPU Torch build uses the PyTorch CPU index).
 
@@ -73,7 +72,7 @@ because they are not constrained by the benchmark’s local Seatbelt sandbox.
 This is an intentional isolation check.
 
 If preflight reports an enabled server, back up `~/.codex/config.toml`,
-then set `enabled = false` in that server’s section:
+then set `enabled = false` in the config.toml's mcp server’s section:
 
     [mcp_servers.node_repl]
     enabled = false
