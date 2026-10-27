@@ -1,4 +1,4 @@
-# Noisy Experimental Search LLM Benchmark
+# Noisy Autonomous Experimental Search LLM Benchmark
 
 Date Updated: 27 Oct 2026 
 
