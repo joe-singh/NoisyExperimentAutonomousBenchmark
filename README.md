@@ -64,12 +64,59 @@ against CLI 0.162.1). The native filesystem sandbox uses macOS Seatbelt. Do not
 disable a failing preflight to obtain benchmark results. Model identifiers and
 available reasoning settings depend on your account and CLI.
 
+### Disable external tool servers before running
+
+The benchmark preflight rejects enabled MCP servers (such as `node_repl`)
+because they are not constrained by the benchmark’s local Seatbelt sandbox.
+This is an intentional isolation check.
+
+If preflight reports an enabled server, back up `~/.codex/config.toml`,
+then set `enabled = false` in that server’s section:
+
+    [mcp_servers.node_repl]
+    enabled = false
+
+If an `enabled` setting already exists, edit it rather than adding a
+duplicate. Leave the other settings unchanged. Repeat for any other
+servers reported by preflight, then rerun the benchmark.
+
+You can restore the original settings after the benchmark finishes.
+This temporarily affects your normal Codex configuration.
+Do not bypass the preflight check.
+
+### Benchmark Campaign Command
+
 ```bash
 python native_blind_runner.py --model YOUR_MODEL_ID --effort medium \
   --budget 50 --repeats 20 --seed 200 --objective dpa \
   --landscape qc_weighted --environment nonstationary_qc \
   --disturbance-profile severe --out codex_native_results
 ```
+### Command-line options
+
+| Flag | Accepted values / meaning |
+|---|---|
+| `--model` | Codex model ID. Examples used in this study: `gpt-6-luna`, `gpt-6-astra`, `gpt-6.1-sol`. Availability depends on your account and Codex CLI. |
+| `--effort` | `low`, `medium`, `high`, or `xhigh`. Not every model supports every setting. `max` and `ultra` are not accepted by this runner. |
+| `--budget` | Measurements per campaign, from 1 to 50. Repeats and QC failures consume this budget. Final nomination is separate. |
+| `--repeats` | Independent campaigns, from 1 to 1000. Each starts a fresh agent session. |
+| `--seed` | First simulation seed. For example, `--seed 200 --repeats 20` uses seeds 200–219. |
+| `--objective` | `dpa` for amplitude-fit contrast, or `complex` for complex-fit contrast. |
+| `--landscape` | `original`, `qc_weighted`, or `qc_only`. These select different reconstructions of the reference measurements. |
+| `--environment` | `clean`, `noisy`, `noisy_qc`, or `nonstationary_qc`. |
+| `--disturbance-profile` | `mild`, `moderate`, or `severe`; applies to the nonstationary environment. |
+| `--out` | Directory for run outputs. |
+
+The blog benchmark uses `--budget 50 --repeats 20 --seed 200`,
+`--objective dpa`, `--landscape qc_weighted`,
+`--environment nonstationary_qc`, and `--disturbance-profile severe`.
+
+For a single trial campaign, change `--repeats 20` to `--repeats 1`.
+The runner does not automatically substitute another model if the requested
+model or reasoning effort is unavailable.
+
+Run `python native_blind_runner.py --help` for all options, including
+timeouts, batch resumption, preflight checks, and mock runs.
 
 For an account-free software test (not an agent benchmark or sandbox test):
 
@@ -87,12 +134,12 @@ The blog's severe cohort uses `qc_weighted`, `nonstationary_qc`, `severe`, DPA,
 50 measurements including repeats and QC failures, and seeds 200–219. Each agent
 then nominates a coordinate. Its score is the noise-free map contrast at that
 coordinate, not its largest observed measurement. Report means over campaigns.
-The 240-point snapshot drives this simulation; agent-informed zoom-in points are
-not used. Other included CSVs document the extraction history.
+The 240-point snapshot drives this simulation and agent-informed zoom-in points are
+not used to prevent biasing the experiment. Other included CSVs document the extraction history.
 
-The 17.08 dB reference is an approximate grid maximum of the reconstructed map,
+The 17.08 dB reference is the grid maximum of the reconstructed simulated map - it is
 not a physical bound on the laboratory experiment. Noise parameters are informed
-by controls but are not a calibrated generative model of the apparatus.
+by experimental control measurements but not strictly modeled on them.
 See NONSTATIONARY_README.md for equations and parameters, and
 SQUID_Agent_Benchmark_Methodology.md for the protocol. Other Markdown files are
 historical development notes and can describe earlier modes.
@@ -105,9 +152,6 @@ dependency guidance, ignore rules and validation notes. Two personal Windows
 log paths were removed from the optional 245-attempt archive. The canonical
 240-point CSV and simulator Python sources were not changed.
 
-Large agent logs, duplicate ZIPs, caches and Mac filesystem metadata are omitted.
-Publishing a landscape allows future systems to learn it; this release supports
+Large agent logs, duplicate ZIPs, caches and filesystem metadata are omitted.
+Publishing a landscape allows future systems to learn it. This release supports
 inspection and reproduction, not a permanently secret evaluation set.
-
-No license is selected in this bundle. The author can choose one when publishing;
-public visibility alone does not grant an open-source license.
